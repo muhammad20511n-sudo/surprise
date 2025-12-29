@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday Aliza 🎉</title>
+
+<style>
+body{
+    margin:0;
+    min-height:100vh;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    font-family: 'Segoe UI', sans-serif;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:auto;
+}
+
+.box{
+    background: rgba(255,255,255,0.15);
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 0 35px rgba(0,0,0,0.3);
+    max-width:700px;
+    text-align:center;
+}
+
+h1{
+    font-size:2.5em;
+    animation: glow 1.5s infinite alternate;
+}
+
+p{
+    font-size:1.1em;
+    line-height:1.6;
+}
+
+/* 🎂 Cake */
+.cake{
+    font-size:4rem;
+    margin:20px 0;
+    cursor:pointer;
+    display:none;
+    animation: float 3s ease-in-out infinite;
+}
+
+/* 🍰 Slice */
+.slice{
+    font-size:4rem;
+    display:none;
+    animation: pop 0.5s ease;
+}
+
+button{
+    margin-top:20px;
+    padding:12px 28px;
+    border:none;
+    border-radius:25px;
+    background:#fff;
+    color:#2575fc;
+    font-size:1em;
+    cursor:pointer;
+}
+
+/* 🎊 Confetti */
+.confetti{
+    position:fixed;
+    top:0;
+    font-size:1.5rem;
+    animation: fall 3s linear forwards;
+}
+
+@keyframes glow{
+    from{ text-shadow:0 0 10px white; }
+    to{ text-shadow:0 0 25px #ffd86b; }
+}
+
+@keyframes float{
+    0%{ transform: translateY(0); }
+    50%{ transform: translateY(-8px); }
+    100%{ transform: translateY(0); }
+}
+
+@keyframes pop{
+    0%{ transform: scale(0); }
+    100%{ transform: scale(1); }
+}
+
+@keyframes fall{
+    0%{ transform: translateY(-10vh); opacity:1; }
+    100%{ transform: translateY(110vh); opacity:0; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<h1>🎉 Happy Birthday Aliza 🎉</h1>
+
+<p id="mainText">
+Aaj ka din sirf tumhara hai ✨<br>
+Tum wo dost ho jiske saath<br>
+khamoshi bhi comfortable lagti hai 💙<br><br>
+
+Thank you for being honest, real,<br>
+aur hamesha saath rehne ke liye 🤍<br><br>
+
+Tum meri life ka wo part ho jahan<br>
+main bina dare sab kuch keh sakta hoon 💙<br><br>
+
+Tumhari honesty, care aur smile<br>
+har cheez special bana deti hai ✨<br><br>
+
+Allah tumhein hamesha khush rakhe 🤍
+</p>
+
+<!-- 🎂 Cake -->
+<div id="cake" class="cake" onclick="cutCake()">🎂</div>
+
+<!-- 🍰 Slice -->
+<div id="slice" class="slice">🍰</div>
+
+<button id="btn" onclick="showCake()">Click for surprise 🎁</button>
+
+</div>
+
+<script>
+function showCake(){
+    document.getElementById("cake").style.display = "block";
+    document.getElementById("btn").style.display = "none";
+}
+
+function cutCake(){
+    document.getElementById("cake").style.display = "none";
+    document.getElementById("slice").style.display = "block";
+    launchConfetti();
+
+    setTimeout(()=>{
+        alert("🎉 Cake cut ho gaya Aliza 🎉\nMay your life be full of smiles & peace 💙");
+    },500);
+}
+
+function launchConfetti(){
+    for(let i=0;i<30;i++){
+        const conf = document.createElement("div");
+        conf.className = "confetti";
+        conf.textContent = "🎊";
+        conf.style.left = Math.random()*100 + "vw";
+        conf.style.animationDuration = (2 + Math.random()*2) + "s";
+        document.body.appendChild(conf);
+
+        setTimeout(()=>conf.remove(),3000);
+    }
+}
+</script>
+
+</body>
+</html>
